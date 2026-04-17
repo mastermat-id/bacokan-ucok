@@ -58,7 +58,7 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
   late TextComponent _textNewGameComponent;
   late TextComponent _textGameModeComponent;
 
-  late RoundedButton _buttonLeaderboard;
+  late RoundedButton _buttonHighScore;
 
   final String timezone = 'UTC+7';
 
@@ -101,11 +101,11 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
       ),
     );
 
-    _buttonLeaderboard = RoundedButton(
+    _buttonHighScore = RoundedButton(
       sizeX: 250,
       bgColor: AppColors.githubColor,
       borderColor: AppColors.blue,
-      text: "Leaderboard",
+      text: "High Score",
       anchor: Anchor.center,
       onPressed: () async {
         await captureAndSaveImage();
@@ -120,7 +120,7 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
       },
     );
 
-    add(_buttonLeaderboard);
+    add(_buttonHighScore);
 
     final flameGame = findGame()!; // Find the current game instance.
 
@@ -128,7 +128,7 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
     addAll(
       [
         _textComponent = TextComponent(
-          text: 'Game Over', // The message to display.
+          text: 'Permainan Selesai', // The message to display.
           position: flameGame.canvasSize / 2, // Center the text on the canvas.
           anchor: Anchor.center, // Set the anchor point to the center.
           children: [
@@ -152,19 +152,19 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
           textRenderer: textTimePaint,
         ),
         _textNewGameComponent = TextComponent(
-          text: "Click anywhere to start new Game",
+          text: "Ketuk di mana saja untuk memulai permainan baru",
           position: flameGame.canvasSize / 2,
           anchor: game.isDesktop ? Anchor.centerRight : Anchor.center,
           textRenderer: textPaint,
         ),
         _textScoreComponent = TextComponent(
-          text: 'Score: ',
+          text: 'Skor: ',
           position: flameGame.canvasSize / 2,
           anchor: Anchor.center,
           textRenderer: textScorePaint,
         ),
         _textGameModeComponent = TextComponent(
-          text: "Mode: ${game.mode == 0 ? 'Easy' : game.mode == 1 ? 'Medium' : 'Hard'}",
+          text: "Mode: ${game.mode == 0 ? 'Mudah' : game.mode == 1 ? 'Sedang' : 'Sulit'}",
           position: flameGame.canvasSize / 2,
           anchor: game.isDesktop ? Anchor.centerLeft : Anchor.center,
           textRenderer: textPaint,
@@ -180,9 +180,9 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
     _textComponent.position = Vector2(game.size.x / 2, game.size.y / 2 - 70);
     _textTimeComponent.position = Vector2(15, 20);
     _textScoreComponent.position = Vector2(game.size.x / 2, game.size.y / 2 + 25);
-    _textScoreComponent.text = 'Score: ${game.getScore()}';
+    _textScoreComponent.text = 'Skor: ${game.getScore()}';
 
-    _buttonLeaderboard.position = Vector2(game.size.x / 2, game.size.y / 2 + 110);
+    _buttonHighScore.position = Vector2(game.size.x / 2, game.size.y / 2 + 110);
 
     _textNewGameComponent.position = game.isDesktop
         ? Vector2(game.size.x - 15, game.size.y - 15)

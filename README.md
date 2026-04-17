@@ -1,6 +1,6 @@
 # Bacokan Ucok
 
-Game slicing cepat berbasis Flutter untuk Android, iOS, web, Windows, Linux, dan macOS.
+Game tebas cepat berbasis Flutter untuk Android, iOS, web, Windows, Linux, dan macOS.
 
 ## Informasi Aplikasi
 
@@ -21,7 +21,7 @@ Bacokan Ucok adalah game arcade ringan bertema potong buah dengan animasi cepat,
 
 - Gameplay swipe untuk memotong objek yang muncul di layar
 - Mode permainan dengan skor real-time
-- Layar `Victory`, `Pause`, dan `Game Over`
+- Layar `Menang`, `Jeda`, dan `Permainan Selesai`
 - Simpan screenshot hasil permainan
 - Dukungan multi-platform dari satu codebase Flutter
 

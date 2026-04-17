@@ -11,9 +11,9 @@ class InteractiveButtonComponent extends PositionComponent
     with TapCallbacks, HasGameReference<MainRouterGame> {
   // List of text labels for different game modes.
   final List<String> texts = [
-    'easy',
-    'medium',
-    'hard',
+    'mudah',
+    'sedang',
+    'sulit',
   ];
 
   // List of image paths corresponding to each game mode.

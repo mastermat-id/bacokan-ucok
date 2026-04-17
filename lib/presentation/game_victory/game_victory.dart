@@ -96,7 +96,7 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
     _buttonNewGameComponent = RoundedButton(
       bgColor: AppColors.githubColor,
       borderColor: AppColors.blue,
-      text: "New Game",
+      text: "Main Lagi",
       anchor: Anchor.center,
       onPressed: () {
         game.router
@@ -113,7 +113,7 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
     addAll(
       [
         _textComponent = TextComponent(
-          text: 'VICTORY', // The message to display when the flameGame is paused.
+          text: 'MENANG', // The message to display when the flameGame is paused.
           position: flameGame.canvasSize / 2, // Center the text on the canvas.
           anchor: Anchor.center, // Set the anchor point to the center of the text.
           children: [
@@ -136,19 +136,19 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
           textRenderer: textTimePaint,
         ),
         _textLeaderboardComponent = TextComponent(
-          text: "Click anywhere to save Rankings",
+          text: "Ketuk di mana saja untuk menyimpan hasil",
           position: flameGame.canvasSize / 2,
           anchor: Anchor.centerRight,
           textRenderer: textPaint,
         ),
         _textScoreComponent = TextComponent(
-          text: 'Score: ',
+          text: 'Skor: ',
           position: flameGame.canvasSize / 2,
           anchor: Anchor.center,
           textRenderer: textScorePaint,
         ),
         _textGameModeComponent = TextComponent(
-          text: "Mode: ${game.mode == 0 ? 'Easy' : game.mode == 1 ? 'Medium' : 'Hard'}",
+          text: "Mode: ${game.mode == 0 ? 'Mudah' : game.mode == 1 ? 'Sedang' : 'Sulit'}",
           position: flameGame.canvasSize / 2,
           anchor: Anchor.centerLeft,
           textRenderer: textPaint,
@@ -168,7 +168,7 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
     _textLeaderboardComponent.position = Vector2(game.size.x - 15, game.size.y - 15);
     _textGameModeComponent.position = Vector2(15, game.size.y - 15);
 
-    _textScoreComponent.text = 'Score: ${game.getScore()}';
+    _textScoreComponent.text = 'Skor: ${game.getScore()}';
   }
 
   /// Always returns true, indicating that this component can contain tap events.

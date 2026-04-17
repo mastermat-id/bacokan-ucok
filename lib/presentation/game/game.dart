@@ -124,19 +124,19 @@ class GamePage extends Component with DragCallbacks, HasGameReference<MainRouter
         textRenderer: _countdownTextPaint,
       ),
       _mistakeTextComponent = TextComponent(
-        text: 'Mistake: $mistakeCount',
+        text: 'Salah: $mistakeCount',
         position: Vector2(game.size.x - 15, 10),
         anchor: Anchor.topRight,
         textRenderer: _mistakeTextPaint,
       ),
       _scoreTextComponent = TextComponent(
-        text: 'Score: $score',
+        text: 'Skor: $score',
         position: Vector2(game.size.x - 15, _mistakeTextComponent!.position.y + 40),
         anchor: Anchor.topRight,
         textRenderer: _scoreTextPaint,
       ),
       _modeTextComponent = TextComponent(
-        text: 'Mode ${game.mode == 0 ? 'Easy' : game.mode == 1 ? 'Medium' : 'Hard'}',
+        text: 'Mode ${game.mode == 0 ? 'Mudah' : game.mode == 1 ? 'Sedang' : 'Sulit'}',
         position: Vector2(game.size.x - 15, game.size.y - 15),
         anchor: Anchor.bottomRight,
         textRenderer: _modeTextPaint,
@@ -293,13 +293,13 @@ class GamePage extends Component with DragCallbacks, HasGameReference<MainRouter
   /// Increment the player's score by one and update the score display.
   void addScore() {
     score++; // Increase score by one
-    _scoreTextComponent?.text = 'Score: $score'; // Update score display
+    _scoreTextComponent?.text = 'Skor: $score'; // Update score display
   }
 
   /// Increment the mistake count and update the mistake display.
   void addMistake() {
     mistakeCount++; // Increase mistake count by one
-    _mistakeTextComponent?.text = 'Mistake: $mistakeCount'; // Update mistake display
+    _mistakeTextComponent?.text = 'Salah: $mistakeCount'; // Update mistake display
     // Check if the player has made too many mistakes
     if (mistakeCount >= 3) {
       gameOver(); // End the game if mistakes exceed limit

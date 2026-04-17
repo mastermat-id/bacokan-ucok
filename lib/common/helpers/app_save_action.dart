@@ -14,19 +14,19 @@ class GitHubService {
   });
 
   Future<void> createIssue() async {
-    final result = win ? 'Win' : 'Game Over';
+    final result = win ? 'Menang' : 'Permainan Selesai';
     final url = Uri(
       scheme: 'mailto',
       path: 'mastermat711@gmail.com',
       queryParameters: {
-        'subject': 'Bacokan Ucok Result: $time',
+        'subject': 'Hasil Bacokan Ucok: $time',
         'body':
             'Nama:\nMode: $mode\nSkor: $score\nStatus: $result\nWaktu: $time\n\nKirim screenshot hasil permainan pada email ini.',
       },
     );
 
     if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
-      throw 'Could not launch $url';
+      throw 'Tidak dapat membuka $url';
     }
   }
 }

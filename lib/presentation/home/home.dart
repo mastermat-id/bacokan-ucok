@@ -39,7 +39,7 @@ class HomePage extends Component with HasGameReference<MainRouterGame> {
     if (game.size.x > 600 && game.size.y > 400) {
       addAll([
         _ediblesTextComponent = TextComponent(
-          text: 'Edibles',
+          text: 'Buah',
           position: Vector2(45, 10),
           anchor: Anchor.topLeft,
           textRenderer: textTitlePaint,
@@ -47,15 +47,15 @@ class HomePage extends Component with HasGameReference<MainRouterGame> {
         TutorialFruitsListComponent(
           isLeft: true,
           fruits: [
-            TutorialFruitComponent(text: 'Apple', imagePath: AppImages.apple, isLeft: true),
-            TutorialFruitComponent(text: 'Banana', imagePath: AppImages.banana, isLeft: true),
-            TutorialFruitComponent(text: 'Cherry', imagePath: AppImages.cherry, isLeft: true),
+            TutorialFruitComponent(text: 'Apel', imagePath: AppImages.apple, isLeft: true),
+            TutorialFruitComponent(text: 'Pisang', imagePath: AppImages.banana, isLeft: true),
+            TutorialFruitComponent(text: 'Ceri', imagePath: AppImages.cherry, isLeft: true),
             TutorialFruitComponent(text: 'Kiwi', imagePath: AppImages.kiwi, isLeft: true),
-            TutorialFruitComponent(text: 'Orange', imagePath: AppImages.orange, isLeft: true),
+            TutorialFruitComponent(text: 'Jeruk', imagePath: AppImages.orange, isLeft: true),
           ],
         )..position = Vector2(0, 50),
         _bombTextComponent = TextComponent(
-          text: 'Bomb',
+          text: 'Bom',
           position: Vector2(game.size.x - 45, 10),
           anchor: Anchor.topRight,
           textRenderer: textTitlePaint,
@@ -63,8 +63,8 @@ class HomePage extends Component with HasGameReference<MainRouterGame> {
         TutorialFruitsListComponent(
           isLeft: false,
           fruits: [
-            TutorialFruitComponent(text: 'Bomb', imagePath: AppImages.bomb, isLeft: false),
-            TutorialFruitComponent(text: 'Flame', imagePath: AppImages.flame, isLeft: false),
+            TutorialFruitComponent(text: 'Bom', imagePath: AppImages.bomb, isLeft: false),
+            TutorialFruitComponent(text: 'Api', imagePath: AppImages.flame, isLeft: false),
             TutorialFruitComponent(text: 'Flutter', imagePath: AppImages.flutter, isLeft: false),
           ],
         )..position = Vector2(0, 50),
@@ -78,7 +78,7 @@ class HomePage extends Component with HasGameReference<MainRouterGame> {
     addAll(
       [
         _button = RoundedButton(
-          text: 'Start',
+          text: 'Mulai',
           onPressed: () {
             game.startBgmMusic();
             game.router.pushNamed(AppRouter.gamePage);
@@ -87,22 +87,22 @@ class HomePage extends Component with HasGameReference<MainRouterGame> {
           borderColor: AppColors.white,
         ),
         _tutorialRuleLose1Component = SimpleCenterText(
-          text: 'Bomb explodes is lose,',
+          text: 'Kalau kena bom kamu kalah,',
           textColor: AppColors.white,
           fontSize: game.isDesktop ? 28 : 20,
         ),
         _tutorialRuleLose2Component = SimpleCenterText(
-          text: 'miss three fruit is a loss.',
+          text: 'melewatkan tiga buah juga kalah.',
           textColor: AppColors.white,
           fontSize: game.isDesktop ? 28 : 20,
         ),
         _tutorialRuleScore1Component = SimpleCenterText(
-          text: 'Hit 1 fruit for 1 point,',
+          text: 'Tebas 1 buah dapat 1 poin,',
           textColor: AppColors.white,
           fontSize: game.isDesktop ? 28 : 20,
         ),
         _tutorialRuleScore2Component = SimpleCenterText(
-          text: '1 fruit can earn many points..',
+          text: 'satu tebasan bisa dapat banyak poin.',
           textColor: AppColors.white,
           fontSize: game.isDesktop ? 28 : 20,
         ),

@@ -1,7 +1,7 @@
 name: bacokanucok
-description: "Bacokan Ucok, a fast-paced slicing game built with Flutter."
+description: "Bacokan Ucok, game tebas cepat yang dibuat dengan Flutter."
 publish_to: 'none'
-version: 0.1.9+1
+version: 1.0.0+1
 
 environment:
   sdk: ^3.5.3
