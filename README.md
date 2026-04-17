@@ -10,6 +10,8 @@ Game slicing cepat berbasis Flutter untuk Android, iOS, web, Windows, Linux, dan
 - Pemilik: Slamet Yulianto
 - Perusahaan: Master Mat Indonesia
 - Email: mastermat711@gmail.com
+- Repository: `https://github.com/mastermat-id/bacokan-ucok`
+- Privacy Policy: `https://mastermat-id.github.io/bacokan-ucok/`
 
 ## Ringkasan
 
