@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description"
+        content="Bacokan Ucok adalah game slicing cepat dari Master Mat Indonesia.">
+  <meta name="keywords"
+        content="Bacokan Ucok, game slicing, Flutter game, Master Mat Indonesia, Slamet Yulianto">
+  <meta name="author" content="Slamet Yulianto">
+  <meta name="publisher" content="Master Mat Indonesia">
+  <meta name="contact" content="mastermat711@gmail.com">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Bacokan Ucok">
+  <link rel="apple-touch-icon" href="./assets/icons/fruit_cutting_logo.png">
+
+  <title>Bacokan Ucok</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./assets/icons/fruit_cutting_logo.png"/>
+  <link rel="manifest" href="./assets/manifest.json">
+
+  <style>
+    /* Set body and html to full height and remove margins */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: black; /* Set background to black */
+      display: flex;
+      justify-content: center;
+      align-items: center; /* Center the content vertically */
+    }
+    /* Style for the loading image */
+    #loading-image {
+      height: 250px; /* Set fixed height for the GIF */
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading image -->
+  <img id="loading-image" src="./assets/load.gif" alt="Loading...">
+
+  <script>
+    // Remove loading image after 10 seconds
+    window.onload = function () {
+      setTimeout(function () {
+        var loadingIndicator = document.getElementById("loading-image");
+        if (loadingIndicator) {
+          loadingIndicator.remove();
+        }
+      }, 10000);
+    };
+  </script>
+
+  <script src="main.dart.js" type="application/javascript"></script>
+</body>
+</html>
