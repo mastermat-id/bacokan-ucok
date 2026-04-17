@@ -6,6 +6,7 @@ import 'package:flame/game.dart';
 import 'package:flame/parallax.dart';
 import 'package:flame_audio/flame_audio.dart';
 
+import 'package:bacokanucok/common/helpers/high_score_storage.dart';
 import 'package:bacokanucok/core/configs/assets/app_images.dart';
 import 'package:bacokanucok/core/configs/assets/app_sfx.dart';
 import 'package:bacokanucok/core/configs/constants/app_configs.dart';
@@ -46,6 +47,7 @@ class MainRouterGame extends FlameGame with KeyboardEvents {
   bool isDesktop = false; // Current state of the screen
 
   int score = 0; // Current score of the player
+  int highScore = 0; // Highest score stored locally
 
   /// Retrieves the current score.
   ///
@@ -54,11 +56,26 @@ class MainRouterGame extends FlameGame with KeyboardEvents {
     return score;
   }
 
+  int getHighScore() {
+    return highScore;
+  }
+
   /// Saves the input score.
   ///
   /// Updates the score with the provided scoreInput value.
   void saveScore(int scoreInput) {
     score = scoreInput;
+  }
+
+  Future<void> loadHighScore() async {
+    highScore = await loadHighScoreValue();
+  }
+
+  Future<void> updateHighScore(int latestScore) async {
+    if (latestScore > highScore) {
+      highScore = latestScore;
+      await saveHighScoreValue(highScore);
+    }
   }
 
   int mode = 0; // Current game mode (0, 1, 2, etc.)
@@ -80,6 +97,8 @@ class MainRouterGame extends FlameGame with KeyboardEvents {
   @override
   void onLoad() async {
     super.onLoad();
+
+    await loadHighScore();
 
     for (final fruit in fruits) {
       await images.load(fruit.image);

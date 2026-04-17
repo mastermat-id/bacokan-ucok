@@ -8,7 +8,6 @@ import 'package:flame/game.dart';
 import 'package:flame/rendering.dart';
 import 'package:flame/text.dart';
 import 'package:flutter/foundation.dart';
-import 'package:bacokanucok/common/helpers/app_save_action.dart';
 import 'package:bacokanucok/common/helpers/screenshot_saver.dart';
 import 'package:bacokanucok/common/widgets/button/rounded_button.dart';
 import 'package:bacokanucok/core/configs/constants/app_router.dart';
@@ -64,7 +63,9 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
 
   /// Load the components for the Game Over page.
   @override
-  FutureOr<void> onLoad() {
+  Future<void> onLoad() async {
+    await game.updateHighScore(game.getScore());
+
     final textTitlePaint = TextPaint(
       style: const TextStyle(
         fontSize: 60,
@@ -105,19 +106,9 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
       sizeX: 250,
       bgColor: AppColors.githubColor,
       borderColor: AppColors.blue,
-      text: "High Score",
+      text: "High Score: ${game.getHighScore()}",
       anchor: Anchor.center,
-      onPressed: () async {
-        await captureAndSaveImage();
-        // Save your score
-        final GitHubService gitHubService = GitHubService(
-          time: _textTimeComponent.text,
-          score: game.getScore().toString(),
-          mode: game.mode.toString(),
-          win: false,
-        );
-        gitHubService.createIssue();
-      },
+      onPressed: () {},
     );
 
     add(_buttonHighScore);

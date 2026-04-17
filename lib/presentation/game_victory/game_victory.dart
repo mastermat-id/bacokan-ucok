@@ -8,7 +8,6 @@ import 'package:flame/game.dart' hide Game; // Hides the Game class to avoid nam
 import 'package:flame/rendering.dart';
 import 'package:flame/text.dart';
 import 'package:flutter/foundation.dart';
-import 'package:bacokanucok/common/helpers/app_save_action.dart';
 import 'package:bacokanucok/common/helpers/screenshot_saver.dart';
 import 'package:bacokanucok/common/widgets/button/rounded_button.dart';
 import 'package:bacokanucok/core/configs/constants/app_router.dart';
@@ -47,7 +46,7 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
   late TextComponent _textComponent; // Text component to show the "VICTORY" message.
   late TextComponent _textTimeComponent;
   late TextComponent _textScoreComponent;
-  late TextComponent _textLeaderboardComponent;
+  late TextComponent _textHighScoreComponent;
   late TextComponent _textGameModeComponent;
 
   late RoundedButton _buttonNewGameComponent;
@@ -57,6 +56,8 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
   /// Load the components for the pause page.
   @override
   Future<void> onLoad() async {
+    await game.updateHighScore(game.getScore());
+
     final textTitlePaint = TextPaint(
       style: const TextStyle(
         fontSize: 80,
@@ -135,8 +136,8 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
           anchor: Anchor.centerLeft, // Set the anchor point to the center.
           textRenderer: textTimePaint,
         ),
-        _textLeaderboardComponent = TextComponent(
-          text: "Ketuk di mana saja untuk menyimpan hasil",
+        _textHighScoreComponent = TextComponent(
+          text: "High Score: ${game.getHighScore()}",
           position: flameGame.canvasSize / 2,
           anchor: Anchor.centerRight,
           textRenderer: textPaint,
@@ -165,10 +166,11 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
     _textTimeComponent.position = Vector2(15, 20);
     _textScoreComponent.position = Vector2(game.size.x / 2, game.size.y / 2 + 25);
     _buttonNewGameComponent.position = Vector2(game.size.x / 2, game.size.y / 2 + 110);
-    _textLeaderboardComponent.position = Vector2(game.size.x - 15, game.size.y - 15);
+    _textHighScoreComponent.position = Vector2(game.size.x - 15, game.size.y - 15);
     _textGameModeComponent.position = Vector2(15, game.size.y - 15);
 
     _textScoreComponent.text = 'Skor: ${game.getScore()}';
+    _textHighScoreComponent.text = "High Score: ${game.getHighScore()}";
   }
 
   /// Always returns true, indicating that this component can contain tap events.
@@ -192,14 +194,9 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
   /// Handle tap up events; navigate back to the previous screen when tapped.
   @override
   Future<void> onTapUp(TapUpEvent event) async {
-    await captureAndSaveImage();
-    final GitHubService gitHubService = GitHubService(
-      time: _textTimeComponent.text,
-      score: game.getScore().toString(),
-      mode: game.mode.toString(),
-      win: true,
-    );
-    gitHubService.createIssue();
+    game.router
+      ..pop()
+      ..pushNamed(AppRouter.homePage, replace: true);
   }
 
   Future<void> captureAndSaveImage() async {
